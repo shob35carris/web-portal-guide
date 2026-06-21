@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>pg模拟器 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f6fafc;
+            color: #1b2d36;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---------- hero ---------- */
+        .hero {
+            background: linear-gradient(145deg, #d9f0f5 0%, #b5dfe8 100%);
+            padding: 4rem 1.5rem 3.5rem;
+            border-radius: 0 0 2.5rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(30, 100, 110, 0.08);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #10424b;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #295f6a;
+            max-width: 600px;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid #3b9aa8;
+            padding-left: 1.2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
+            font-size: 0.95rem;
+            color: #2b6773;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta i {
+            display: inline-block;
+            width: 1.1rem;
+            height: 1.1rem;
+            background: #3b9aa8;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        /* ---------- 网格卡片区 ---------- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        @media (min-width: 600px) {
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .cards-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1.6rem 1.4rem 1.8rem;
+            box-shadow: 0 2px 8px rgba(40, 120, 130, 0.06);
+            border: 1px solid #dcedf0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(40, 120, 130, 0.08);
+            border-color: #b2dbe3;
+        }
+
+        .card .icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: #d3eef2;
+            border-radius: 0.8rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d5b67;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #124a55;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2d5c65;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .footnote {
+            font-size: 0.85rem;
+            color: #5e8891;
+            margin-top: 0.6rem;
+            border-top: 1px dashed #c8e0e5;
+            padding-top: 0.6rem;
+        }
+
+        /* ---------- 说明区（叙述段） ---------- */
+        .intro-section {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 2px 8px rgba(30, 100, 110, 0.04);
+            border: 1px solid #d7e9ed;
+        }
+
+        .intro-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0b4956;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .intro-section p {
+            margin-bottom: 0.9rem;
+            color: #1a3d45;
+        }
+
+        .intro-section .highlight-link {
+            background: #e6f5f8;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            white-space: nowrap;
+            color: #0b5f6d;
+        }
+
+        .intro-section a {
+            color: #0b6d7c;
+            text-decoration: none;
+            border-bottom: 1.5px solid #9fcbd3;
+            transition: border-color 0.2s;
+        }
+
+        .intro-section a:hover {
+            border-bottom-color: #0b6d7c;
+        }
+
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-summary {
+            background: #e8f2f5;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.8rem 2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0e4652;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #c6dce2;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #124a55;
+            display: flex;
+            gap: 0.6rem;
+            align-items: baseline;
+        }
+
+        .faq-q::before {
+            content: "▹";
+            color: #327b88;
+            font-size: 1.2rem;
+        }
+
+        .faq-a {
+            margin: 0.2rem 0 0 1.6rem;
+            font-size: 0.93rem;
+            color: #2b5f69;
+        }
+
+        .faq-a code {
+            background: #d0e5ea;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #0b4a56;
+        }
+
+        .faq-more {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-align: right;
+            color: #3d7885;
+        }
+
+        /* ---------- 底部链接 ---------- */
+        .bottom-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0 2rem;
+            border-top: 1px solid #c9e0e5;
+            margin-top: 1rem;
+        }
+
+        .bottom-links .site-id {
+            font-size: 0.95rem;
+            color: #205b66;
+        }
+
+        .bottom-links .site-id a {
+            color: #0b6d7c;
+            text-decoration: none;
+            border-bottom: 1px solid #9fcbd3;
+        }
+
+        .bottom-links .site-id a:hover {
+            border-bottom-color: #0b6d7c;
+        }
+
+        .bottom-links .meta-note {
+            font-size: 0.85rem;
+            color: #68939d;
+        }
+
+        /* ---------- 响应式微调 ---------- */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+                padding-left: 0.8rem;
+            }
+            .intro-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .bottom-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* 小装饰 */
+        .accent-dot {
+            color: #3b9aa8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 区 -->
+        <header class="hero">
+            <h1>pg模拟器 · 一个安静的信息站</h1>
+            <div class="sub">
+                不是入口，不是功能面板，只是一页关于站点的介绍与说明。
+            </div>
+            <div class="hero-meta">
+                <span><i></i> 站点方向：模拟器相关内容索引</span>
+                <span><i></i> 维护方式：持续整理与更新</span>
+                <span><i></i> 内容编排：叙述式，轻量阅读</span>
+            </div>
+        </header>
+
+        <!-- 优势区：网格卡片 -->
+        <div class="cards-grid">
+            <div class="card">
+                <div class="icon">﹡</div>
+                <h3>内容基调</h3>
+                <p>页面围绕 pg模拟器 相关的概念、背景与使用场景展开，不夸大，不堆砌术语，保持克制。</p>
+                <div class="footnote">以可信说明为侧重</div>
+            </div>
+            <div class="card">
+                <div class="icon">◈</div>
+                <h3>结构清晰</h3>
+                <p>从介绍到 FAQ，段落独立，方便快速了解站点的定位以及常见问题。</p>
+                <div class="footnote">卡片式布局，蓝绿色点缀</div>
+            </div>
+            <div class="card">
+                <div class="icon">⊡</div>
+                <h3>适应场景</h3>
+                <p>适合初次接触站点的访客，也适合需要回顾站点信息的用户。</p>
+                <div class="footnote">移动端同样友好</div>
+            </div>
+        </div>
+
+        <!-- 说明区：站点介绍与可信说明 -->
+        <div class="intro-section">
+            <h2>关于这个站点</h2>
+            <p>
+                这是一个以 <strong>pg模拟器</strong> 为核心关键词的轻量说明页。站点本身并不提供下载或直接运行服务，而是围绕相关概念、常见疑问以及背景资料进行整理。如果你之前对 <a href="https://web-portal-pg.com">pg模拟器</a> 有所耳闻，想了解它的大致定位与使用场景，这里的内容或许能提供一些参考。
+            </p>
+            <p>
+                站点的内容由维护团队按照“可信、中立、不渲染”的原则编写。所有涉及功能与特性的描述均基于公开资料与常见使用反馈，不存在未经证实的承诺或诱导性表述。我们希望每一个通过搜索或推荐来到这里的人，都能在几分钟内获得相对完整且克制的认知。
+            </p>
+            <p>
+                在信息组织上，我们刻意避免了密集的按钮或行动号召，而是采用段落与卡片穿插的方式，让浏览节奏更自然。这也是为什么这一页看起来更像一篇介绍，而非典型的落地页——我们认为，对于 <span class="highlight-link">pg模拟器</span> 这类主题，清晰的说明比直接的引导更有价值。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h2>常见疑问 · 摘要</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">“pg模拟器”具体指什么？</div>
+                <div class="faq-a">通常指一类模拟运行环境或工具，用于在特定平台上模拟某些系统行为或程序逻辑。本站围绕其通用概念展开介绍，不特指某一款闭源软件。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">站点是否提供模拟器下载？</div>
+                <div class="faq-a">不提供。本站是信息说明页，不托管任何安装包或二进制文件。如有需要，建议通过官方或可信源获取。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">内容更新频率如何？</div>
+                <div class="faq-a">根据行业动态与用户反馈进行不定期更新。FAQ 部分会优先补充最常被问到的条目。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">链接的可靠性如何？</div>
+                <div class="faq-a">站内所有指向 <code>web-portal-pg.com</code> 的链接均为直链，文本统一为“pg模拟器”，无跳转中介。</div>
+            </div>
+
+            <div class="faq-more">
+                —— 更多内容可浏览站点其他页面 ——
+            </div>
+        </div>
+
+        <!-- 底部链接区 -->
+        <div class="bottom-links">
+            <div class="site-id">
+                <a href="https://web-portal-pg.com">pg模拟器</a> · 说明页
+            </div>
+            <div class="meta-note">
+                内容持续整理 · 无诱导表述
+            </div>
+        </div>
+    </div>
+</body>
+</html>
